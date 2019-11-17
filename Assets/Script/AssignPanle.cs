@@ -10,6 +10,7 @@ public class AssignPanle : MonoBehaviour {
 	private GameObject firstNameType;
 	private RectTransform toggleMove;
 	private RectTransform initPos;
+	private bool isMove;
 
 	private Button beggin;
 
@@ -17,7 +18,7 @@ public class AssignPanle : MonoBehaviour {
 	void Start () {
 		iniputFirstName=transform.Find("InputFirstName").GetComponent<InputField>();
 		firstNameType=transform.Find("ToggleFirstNameType").gameObject;
-		beggin=transform.Find("Beggin").GetComponent<Button>();
+		beggin=transform.Find("ToggleMove/Beggin").GetComponent<Button>();
 		toggleMove=transform.Find("ToggleMove").GetComponent<RectTransform>();
 		beggin.onClick.AddListener(UIControl._instant.ResoultPanle);
 		initPos=toggleMove;
@@ -28,15 +29,17 @@ public class AssignPanle : MonoBehaviour {
 		if(iniputFirstName.text=="")
 		{
 			firstNameType.SetActive(true);
-			if(toggleMove!=initPos)
-				toggleMove.DOLocalMoveY(toggleMove.localPosition.y-125,0.6f);
-
+			if(isMove==true)
+				toggleMove.DOLocalMoveY(toggleMove.localPosition.y-115,0.6f);
+			isMove=false;
 		}
 		else
 		{
 			firstNameType.SetActive(false);
-			if(toggleMove.localPosition.y!=initPos.localEulerAngles.y+125)
-				toggleMove.DOLocalMoveY(toggleMove.localPosition.y+125,0.6f);
+			if(!isMove)
+				toggleMove.DOLocalMoveY(toggleMove.localPosition.y+115,0.6f);
+			isMove=true;
+			
 		}
 	}
 }

@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using LitJson;
 
 public class UIControl : MonoBehaviour {
 
@@ -46,6 +48,7 @@ public class UIControl : MonoBehaviour {
 
 		resoule.transform.Find("bg").GetComponent<Image>().color=new Color(1,1,1,0);
 		resoule.SetActive(false);
+		JsonRead();
 	}
 	
 	// Update is called once per frame
@@ -74,8 +77,27 @@ public class UIControl : MonoBehaviour {
 		resoule.GetComponent<RectTransform>().DOScale(new Vector3(1,1,1),0.5f);
 		///TODO
 		///各种信息
-		
 
+	}
+
+	private void JsonRead()
+	{
+		string json="";
+		TextAsset text=Resources.Load<TextAsset>("word");
+		if(!string.IsNullOrEmpty(json))
+			json=text.text;
+		if(text!=null)
+			Debug.Log(text.text);
+
+		if(string.IsNullOrEmpty(json)){}
+			//return null;
+
+			StreamReader streamreader = new StreamReader(Application.dataPath + "/StreamingAssets/word.json");//读取数据，转换成数据流
+            JsonReader json1 = new JsonReader(streamreader);//再转换成json数据
+           	Debug.Log(json1.Value);
+
+		
+		//return json;
 	}
 
 }
