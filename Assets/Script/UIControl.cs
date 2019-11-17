@@ -74,7 +74,7 @@ public class UIControl : MonoBehaviour {
 		resoule.GetComponent<RectTransform>().DOScale(new Vector3(1,1,1),0.5f);
 		///TODO
 		///各种信息
-
+		
 
 	}
 
