@@ -13,12 +13,16 @@ public class UIControl : MonoBehaviour {
 	private Toggle assignToggle;
 
 	private Button exitButton;	
-
-	
+	private Text resoultName;
+	private Text firstNameExplain;
+	private Text lastNameExplain;
 
 	private GameObject assignPanle;
 	private GameObject randomBeggin;
 	private GameObject resoule;
+
+	private string firstName;
+	private bool isRandom;
 
 	private void Awake()
 	{
@@ -31,6 +35,10 @@ public class UIControl : MonoBehaviour {
 		resoule=transform.Find("Resoult").gameObject;
 
 		exitButton=transform.Find("Resoult/ExitButton").GetComponent<Button>();
+		resoultName=transform.Find("Resoult/ResoultName").GetComponent<Text>();
+		firstNameExplain=transform.Find("Resoult/FirstNameExplain").GetComponent<Text>();
+		lastNameExplain=transform.Find("Resoult/LastNameExplain").GetComponent<Text>();
+
 	}
 	// Use this for initialization
 	void Start () {		
@@ -42,6 +50,8 @@ public class UIControl : MonoBehaviour {
 		exitButton.onClick.AddListener(()=>{
 		resoule.GetComponent<RectTransform>().DOScale(new Vector3(0,0,0),0.5f).OnComplete(()=>resoule.SetActive(false));
 		resoule.transform.Find("bg").GetComponent<Image>().DOColor(new Color(1,1,1,0),0.5f);
+		firstNameExplain.text="";
+		resoultName.text="";
 		});
 
 		randomBeggin.GetComponent<Button>().onClick.AddListener(ResoultPanle);
@@ -55,6 +65,7 @@ public class UIControl : MonoBehaviour {
 	void Update () {
 		if(randomToggle.isOn)
 		{
+			isRandom=true;
 			assignPanle.GetComponent<RectTransform>().DOLocalMove(new Vector3(1968,-151,0),1).OnComplete(()=>assignPanle.GetComponent<RectTransform>().localPosition=new Vector3(-1968,-151,0));
 			assignPanle.GetComponent<RectTransform>().DOScale(new Vector3(0,0,0),1);
 
@@ -63,6 +74,7 @@ public class UIControl : MonoBehaviour {
 		}
 		if(assignToggle.isOn)
 		{
+			isRandom=false;
 			assignPanle.GetComponent<RectTransform>().DOLocalMove(new Vector3(100,-151,0),1);
 			assignPanle.GetComponent<RectTransform>().DOScale(new Vector3(1,1,1),1);
 
@@ -77,7 +89,48 @@ public class UIControl : MonoBehaviour {
 		resoule.GetComponent<RectTransform>().DOScale(new Vector3(1,1,1),0.5f);
 		///TODO
 		///各种信息
+		Debug.Log(AssignPanle.iniputFirstName.text);
+		if(isRandom)
+		{
+			resoultName.text=RandomName();
+			firstNameExplain.text=firstName+": "+ GetFirstNameExplain();
+		}
+		else
+		{
+			
+		}
+	}
 
+	private string RandomName()
+	{		
+		int fistNameType=Random.Range(0,2);
+		if(fistNameType==0) //aloneFirstName
+		{
+			firstName=Initinfo.aloneFirstName[Random.Range(0,Initinfo.aloneFirstName.Count)];
+		}
+		else //twoFirstName
+		{
+			firstName=Initinfo.twoFirstName[Random.Range(0,Initinfo.twoFirstName.Count)];
+		}
+
+		return firstName;
+	}
+
+	private string GetFirstNameExplain()
+	{		
+		return Initinfo.firstNameInfoDic[firstName];
+	}
+
+	private void AssignCondition()
+	{
+		if(AssignPanle.isAssignFirstName)
+		{
+			firstName=AssignPanle.iniputFirstName.text;
+		}
+		else
+		{
+			
+		}
 	}
 
 	private void JsonRead()
