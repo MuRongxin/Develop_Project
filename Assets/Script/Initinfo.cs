@@ -12,6 +12,7 @@ public class Initinfo : MonoBehaviour {
     public static List<string> girlLastName=new List<string>();
 
     public static Dictionary<string,string> firstNameInfoDic=new Dictionary<string, string>();
+    public static Dictionary<string,string> girlLastNameInfoDic=new Dictionary<string, string>();
     private void Awake()
     {
         aloneFirstName.Add("洛");
@@ -43,7 +44,29 @@ public class Initinfo : MonoBehaviour {
         firstNameInfoDic.Add("梦","这个姓氏基本很难见到，若是以梦为姓氏，作为女子一定是十分具有可爱，梦幻的感觉了。");
         firstNameInfoDic.Add("风","风一般的男子，这种自然类的姓氏来源都比较古老，反而更有一种古朴的味道。");
         firstNameInfoDic.Add("佐","这个姓氏起源于明朝，正是少见，更为别致。");
-       
+        
+        boyLastName.Add("晨朗");
+        boyLastName.Add("齐天");
+        boyLastName.Add("佳乐");
+        boyLastName.Add("方宁");
+        boyLastName.Add("铭");
+        boyLastName.Add("帅");
+        boyLastName.Add("林");
+
+        girlLastName.Add("晓晴");
+        girlLastName.Add("百合");
+        girlLastName.Add("瑾萱");
+        girlLastName.Add("诗婧");
+        girlLastName.Add("诗涵");
+        girlLastName.Add("橘");
+        girlLastName.Add("桔");
+        girlLastName.Add("梦");
+        girlLastName.Add("雪");
+        girlLastName.Add("琴");
+
+        girlLastNameInfoDic.Add("瑾萱","瑾：美玉;萱：传说中一种忘忧的草");
+        girlLastNameInfoDic.Add("诗婧","如诗画一般的美丽女孩;羽馨 羽缎 ;温馨");
+        girlLastNameInfoDic.Add("诗涵","有文采且有内涵的女孩");
     }
 
 }
