@@ -22,6 +22,7 @@ public class UIControl : MonoBehaviour {
 	private GameObject resoule;
 
 	private string firstName;
+	private string lastName;
 	private bool isRandom;
 
 	private void Awake()
@@ -89,48 +90,89 @@ public class UIControl : MonoBehaviour {
 		resoule.GetComponent<RectTransform>().DOScale(new Vector3(1,1,1),0.5f);
 		///TODO
 		///各种信息
-		Debug.Log(AssignPanle.iniputFirstName.text);
+		//Debug.Log(AssignPanle.iniputFirstName.text);
 		if(isRandom)
 		{
 			resoultName.text=RandomName();
 			firstNameExplain.text=firstName+": "+ GetFirstNameExplain();
+			lastNameExplain.text=lastName+": "+GetLastNameExplain();
 		}
 		else
 		{
-			
+			AssignCondition();
+			firstNameExplain.text=firstName+": "+ GetFirstNameExplain();
+			lastNameExplain.text=lastName+": "+GetLastNameExplain();
 		}
 	}
 
 	private string RandomName()
 	{		
-		int fistNameType=Random.Range(0,2);
-		if(fistNameType==0) //aloneFirstName
+		int random=Random.Range(0,2);
+		if(random==0) //aloneFirstName
 		{
 			firstName=Initinfo.aloneFirstName[Random.Range(0,Initinfo.aloneFirstName.Count)];
+			lastName=Initinfo.boyLastName[Random.Range(0,Initinfo.boyLastName.Count)];
 		}
 		else //twoFirstName
 		{
 			firstName=Initinfo.twoFirstName[Random.Range(0,Initinfo.twoFirstName.Count)];
+			int random1=Random.Range(0,2);
+			if(random1==0)
+				lastName=Initinfo.girlLastName[Random.Range(0,Initinfo.girlLastName.Count)];
+			else
+				lastName=Initinfo.middleLastName[Random.Range(0,Initinfo.middleLastName.Count)];
 		}
 
-		return firstName;
+		return firstName+" "+lastName;
 	}
 
 	private string GetFirstNameExplain()
-	{		
-		return Initinfo.firstNameInfoDic[firstName];
+	{	
+		if(Initinfo.firstNameInfoDic.ContainsKey(firstName))	
+			return Initinfo.firstNameInfoDic[firstName];
+		else
+			{
+				string temp="该姓氏暂时没有解释";
+				return temp;
+			}
+	}
+
+	private string GetLastNameExplain()
+	{
+		if(Initinfo.LastNameInfoDic.ContainsKey(lastName))
+			return Initinfo.LastNameInfoDic[lastName];
+		else
+		{
+			string temp="该名字暂时没有解释";
+			return temp;
+		}
 	}
 
 	private void AssignCondition()
 	{
+		
 		if(AssignPanle.isAssignFirstName)
 		{
+			//Debug.Log(AssignPanle.iniputFirstName.text);
 			firstName=AssignPanle.iniputFirstName.text;
-		}
-		else
-		{
 			
 		}
+		else//不指定姓氏；
+		{
+			if(AssignPanle.isNormalFirstName)
+				firstName=Initinfo.aloneFirstName[Random.Range(0,Initinfo.aloneFirstName.Count)];
+			else
+				firstName=Initinfo.twoFirstName[Random.Range(0,Initinfo.twoFirstName.Count)];
+		}
+
+		if(AssignPanle.lastNameType=="boy")
+			lastName=Initinfo.boyLastName[Random.Range(0,Initinfo.boyLastName.Count)];
+		else if(AssignPanle.lastNameType=="girl")
+			lastName=Initinfo.girlLastName[Random.Range(0,Initinfo.girlLastName.Count)];
+		else
+			lastName=Initinfo.middleLastName[Random.Range(0,Initinfo.middleLastName.Count)];
+
+		resoultName.text=firstName+" "+lastName;
 	}
 
 	private void JsonRead()

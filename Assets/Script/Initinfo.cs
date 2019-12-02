@@ -12,7 +12,7 @@ public class Initinfo : MonoBehaviour {
     public static List<string> girlLastName=new List<string>();
 
     public static Dictionary<string,string> firstNameInfoDic=new Dictionary<string, string>();
-    public static Dictionary<string,string> girlLastNameInfoDic=new Dictionary<string, string>();
+    public static Dictionary<string,string> LastNameInfoDic=new Dictionary<string, string>();
     private void Awake()
     {
         aloneFirstName.Add("洛");
@@ -64,9 +64,28 @@ public class Initinfo : MonoBehaviour {
         girlLastName.Add("雪");
         girlLastName.Add("琴");
 
-        girlLastNameInfoDic.Add("瑾萱","瑾：美玉;萱：传说中一种忘忧的草");
-        girlLastNameInfoDic.Add("诗婧","如诗画一般的美丽女孩;羽馨 羽缎 ;温馨");
-        girlLastNameInfoDic.Add("诗涵","有文采且有内涵的女孩");
+        middleLastName.Add("夏雨");
+        middleLastName.Add("冰");
+        middleLastName.Add("乐");
+        middleLastName.Add("言");
+
+       LastNameInfoDic.Add("瑾萱","瑾：美玉;萱：传说中一种忘忧的草");
+       LastNameInfoDic.Add("诗婧","如诗画一般的美丽女孩;羽馨 羽缎 ;温馨");
+       LastNameInfoDic.Add("诗涵","有文采且有内涵的女孩");
+       LastNameInfoDic.Add("晨朗","清早，太阳出来的时候：早晨。凌晨。晨光。晨曦（晨光）。晨风。晨雾。晨炊。");
+       LastNameInfoDic.Add("齐天","齐 （齊） qí 东西的一头平或排成一条直线：齐整。参差不齐。 达到，跟什么一般平：见贤思齐,天 tiān 在地面以上的高空：天空。天际。天罡（北斗星）。天渊（上天和深渊，喻差别大）");
+       LastNameInfoDic.Add("佳乐","美，好的：佳美。佳妙。佳句。佳作。佳音。佳节。佳境。佳期。佳人。佳丽（ａ．美丽；ｂ．美女）。佳偶。佳酿。美酒佳肴。好美");
+       LastNameInfoDic.Add("方宁","平安，安定：～静。～谧。息事～人。");
+       LastNameInfoDic.Add("铭","铸、刻或写在器物上记述生平、事迹或警诫自己的文字：铭刻。铭文。铭志。墓志铭。座右铭。");
+       LastNameInfoDic.Add("帅","军队中最高级的指挥官：元帅。统帅。");
+       LastNameInfoDic.Add("林","长在一片土地上的许多树木或竹子：树林。森林。林海。林薮（ａ．山林小泽；ｂ．喻丛集的处所）。");
+       LastNameInfoDic.Add("晓晴","天明：晓市。拂晓。破晓。报晓。知道，懂得：晓畅。晓得。分晓。使人知道清楚：晓示。晓谕。");
+       LastNameInfoDic.Add("百合","单子叶植物，百合科。多年生草本。花大而美丽，有香气，可供观赏。地下鳞茎近球形，富含淀粉，可供食用和药用，能润肺止咳、清热安神等。广泛分布于中国华东、华中、华南和西南地区。");      
+       LastNameInfoDic.Add("瑾萱","美玉，亦喻美德：瑾瑜。“怀瑾握瑜兮，穷不得所示”");
+       LastNameInfoDic.Add("诗涵","包容，包含：涵蓄。涵容。涵养（ａ．蓄积并保持，如“涵涵水源”；ｂ．指修养，如“他很有涵涵”）。包涵。蕴涵。海涵。");
+    //    LastNameInfoDic.Add("","");
+    //    LastNameInfoDic.Add("","");
+    //    LastNameInfoDic.Add("","");
     }
 
 }
