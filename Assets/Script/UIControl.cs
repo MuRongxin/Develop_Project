@@ -28,7 +28,7 @@ public class UIControl : MonoBehaviour {
 	private void Awake()
 	{
 		_instant=this;		
-		Screen.SetResolution(1600,1000,false);
+		Screen.SetResolution(1440,900,false);
 		randomToggle=transform.Find("Toggle/RandomToggle").GetComponent<Toggle>();
 		assignToggle=transform.Find("Toggle/AssignToggle").GetComponent<Toggle>();
 		assignPanle=transform.Find("AssignPanle").gameObject;
